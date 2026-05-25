@@ -1,0 +1,1832 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Official Portal of the Sovereign Republic of Dogestan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:        #0b2545;
+    --navy-deep:   #061a35;
+    --navy-soft:   #163358;
+    --gold:        #b48a3d;
+    --gold-light:  #d8b366;
+    --gold-deep:   #8a6826;
+    --parchment:   #f5eedb;
+    --parchment-2: #efe5c8;
+    --parchment-3: #e8dcb8;
+    --ink:         #1c1a14;
+    --ink-soft:    #4a4536;
+    --rule:        #c9b98a;
+    --rule-soft:   #d8cba2;
+    --muted:       #6b6450;
+    --stamp:       #a8262a;
+
+    --serif-display: "Cinzel", "Trajan Pro", "Times New Roman", serif;
+    --serif-head:    "Cormorant Garamond", "Garamond", "Times New Roman", serif;
+    --serif-body:    "EB Garamond", "Garamond", "Times New Roman", serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: var(--serif-body);
+    font-size: 18px;
+    line-height: 1.55;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(rgba(120, 100, 50, 0.045) 1px, transparent 1px),
+      radial-gradient(rgba(120, 100, 50, 0.04) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+  }
+
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid rgba(11, 37, 69, 0.25); }
+  a:hover { border-bottom-color: var(--navy); }
+
+  /* --------------------------------------------------------------------- */
+  /*  Top utility bar — like the .gov "official site" strip                */
+  /* --------------------------------------------------------------------- */
+  .gov-strip {
+    background: #1a1a14;
+    color: #d8d2bd;
+    font-family: var(--serif-body);
+    font-size: 13px;
+    border-bottom: 1px solid #000;
+  }
+  .gov-strip-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 7px 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .gov-strip .tiny-seal {
+    width: 16px; height: 16px; flex: none;
+  }
+  .gov-strip strong { color: #f1e9cf; font-weight: 600; letter-spacing: 0.02em; }
+  .gov-strip .pipe { opacity: 0.4; margin: 0 4px; }
+  .gov-strip .lock { font-size: 11px; }
+
+  /* --------------------------------------------------------------------- */
+  /*  National header                                                      */
+  /* --------------------------------------------------------------------- */
+  .nat-header {
+    background: var(--navy);
+    color: var(--parchment);
+    border-bottom: 4px double var(--gold);
+    position: relative;
+  }
+  .nat-header::before, .nat-header::after {
+    content: "";
+    display: block;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--gold) 15%, var(--gold) 85%, transparent);
+  }
+  .nat-header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 38px 28px 30px;
+    display: grid;
+    grid-template-columns: 130px 1fr 130px;
+    gap: 28px;
+    align-items: center;
+  }
+  .nat-header .seal-wrap { display: flex; justify-content: center; }
+  .nat-header .seal { width: 130px; height: 130px; }
+  .nat-header h1 {
+    margin: 0;
+    font-family: var(--serif-display);
+    font-weight: 600;
+    font-size: clamp(22px, 3.2vw, 38px);
+    letter-spacing: 0.12em;
+    text-align: center;
+    color: #f5e7be;
+    line-height: 1.1;
+  }
+  .nat-header .h1-small {
+    display: block;
+    font-size: 0.55em;
+    letter-spacing: 0.32em;
+    color: #cbb87c;
+    margin-bottom: 10px;
+  }
+  .nat-header .motto {
+    text-align: center;
+    font-family: var(--serif-head);
+    font-style: italic;
+    color: #d8c896;
+    margin-top: 14px;
+    font-size: clamp(15px, 1.4vw, 18px);
+    letter-spacing: 0.04em;
+  }
+  .nat-header .motto::before,
+  .nat-header .motto::after {
+    content: "❦";
+    color: var(--gold);
+    margin: 0 12px;
+    font-style: normal;
+    font-size: 0.85em;
+    position: relative; top: -2px;
+  }
+  .nat-header .flag-pole {
+    display: flex; flex-direction: column; align-items: flex-end;
+    font-family: var(--serif-display); font-size: 11px;
+    letter-spacing: 0.2em; color: #cbb87c;
+    gap: 8px;
+  }
+  .nat-header .flag-pole .flag {
+    width: 88px; height: 56px; background: var(--navy-deep);
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .nat-header .flag-pole .flag::before {
+    content: ""; position: absolute; inset: 4px; border: 1px solid rgba(216,179,102,0.35);
+  }
+  .nat-header .flag-pole .flag svg { width: 32px; height: 32px; }
+
+  /* nav */
+  .nat-nav {
+    background: var(--navy-deep);
+    border-bottom: 1px solid var(--gold-deep);
+  }
+  .nat-nav-inner {
+    max-width: 1180px; margin: 0 auto;
+    padding: 0 28px;
+    display: flex; flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .nat-nav a {
+    color: #e8dcb8;
+    border: none;
+    font-family: var(--serif-display);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    padding: 14px 18px;
+    text-transform: uppercase;
+    border-right: 1px solid rgba(216,179,102,0.18);
+    transition: background 0.15s;
+  }
+  .nat-nav a:first-child { border-left: 1px solid rgba(216,179,102,0.18); }
+  .nat-nav a:hover { background: var(--navy-soft); color: #f5e7be; }
+
+  /* --------------------------------------------------------------------- */
+  /*  Generic page container                                               */
+  /* --------------------------------------------------------------------- */
+  main { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+  .section {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .section:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    font-family: var(--serif-display);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before, .eyebrow.center::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--rule), transparent);
+  }
+  .eyebrow:not(.center)::before { max-width: 32px; }
+
+  .section-title {
+    font-family: var(--serif-head);
+    font-weight: 500;
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1.1;
+    color: var(--navy);
+    margin: 0 0 14px;
+    letter-spacing: -0.005em;
+  }
+  .section-lede {
+    font-family: var(--serif-head);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 20px;
+    max-width: 64ch;
+    margin: 0 0 36px;
+  }
+
+  /* ornamental divider */
+  .ornament {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px;
+    color: var(--gold);
+    margin: 24px auto;
+    font-size: 14px;
+  }
+  .ornament::before, .ornament::after {
+    content: ""; height: 1px; flex: 1; max-width: 140px;
+    background: linear-gradient(to right, transparent, var(--rule), transparent);
+  }
+
+  /* --------------------------------------------------------------------- */
+  /*  HERO — Founding Declaration                                          */
+  /* --------------------------------------------------------------------- */
+  .hero {
+    padding: 80px 0 64px;
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .hero .doc-meta {
+    display: inline-flex;
+    gap: 22px;
+    font-family: var(--serif-display);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--gold-deep);
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero .doc-meta span { display: inline-flex; gap: 8px; align-items: center; }
+  .hero .doc-meta b { color: var(--ink); font-weight: 600; }
+  .hero h2 {
+    font-family: var(--serif-head);
+    font-weight: 500;
+    color: var(--navy);
+    font-size: clamp(38px, 6vw, 72px);
+    line-height: 1.05;
+    margin: 0 0 22px;
+    letter-spacing: -0.01em;
+  }
+  .hero h2 em { font-style: italic; color: var(--gold-deep); }
+  .hero .declaration {
+    font-family: var(--serif-head);
+    font-size: clamp(20px, 2.3vw, 26px);
+    color: var(--ink-soft);
+    font-style: italic;
+    max-width: 68ch;
+    margin: 0 auto 44px;
+    line-height: 1.45;
+  }
+  .hero .declaration::first-letter {
+    font-family: var(--serif-display);
+    font-size: 3.2em;
+    float: left;
+    line-height: 0.85;
+    padding: 6px 10px 0 0;
+    color: var(--navy);
+    font-style: normal;
+  }
+
+  .registry {
+    display: inline-block;
+    background: var(--parchment-2);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--navy);
+    padding: 18px 26px 16px;
+    text-align: left;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+    margin-top: 12px;
+    max-width: 100%;
+  }
+  .registry .reg-head {
+    font-family: var(--serif-display);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .registry .reg-no {
+    font-family: "Courier New", monospace;
+    font-size: 15px;
+    color: var(--ink);
+    word-break: break-all;
+    line-height: 1.4;
+  }
+  .registry .reg-no b { color: var(--navy); }
+  .registry .reg-foot {
+    font-family: var(--serif-body); font-style: italic;
+    font-size: 13px; color: var(--muted); margin-top: 8px;
+  }
+
+  .hero .pair {
+    display: flex; justify-content: center; gap: 28px; flex-wrap: wrap;
+    margin-top: 36px;
+  }
+  .stat-card {
+    background: var(--parchment-2);
+    border: 1px solid var(--rule);
+    padding: 14px 26px;
+    min-width: 180px;
+  }
+  .stat-card .label {
+    font-family: var(--serif-display);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--gold-deep);
+    margin-bottom: 4px;
+  }
+  .stat-card .val {
+    font-family: var(--serif-head);
+    font-size: 22px;
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  /* --------------------------------------------------------------------- */
+  /*  GDP FLIP TRACKER                                                     */
+  /* --------------------------------------------------------------------- */
+  .bulletin-frame {
+    background: var(--parchment-2);
+    border: 1px solid var(--rule);
+    border-top: 5px solid var(--navy);
+    padding: 0;
+    position: relative;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+  }
+  .bulletin-frame::after {
+    content: "";
+    position: absolute; inset: 4px;
+    border: 1px solid rgba(180, 138, 61, 0.35);
+    pointer-events: none;
+  }
+
+  .bulletin-head {
+    padding: 26px 36px 22px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 24px;
+  }
+  .bulletin-head .left .issuer {
+    font-family: var(--serif-display);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--gold-deep);
+    margin-bottom: 6px;
+  }
+  .bulletin-head .left h3 {
+    margin: 0;
+    font-family: var(--serif-head);
+    font-weight: 500;
+    color: var(--navy);
+    font-size: clamp(26px, 3.4vw, 38px);
+    line-height: 1.05;
+  }
+  .bulletin-head .right {
+    text-align: right;
+    font-family: var(--serif-body);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .bulletin-head .right b { color: var(--ink); font-weight: 600; }
+  .bulletin-head .right .lineitem { display: block; line-height: 1.6; }
+
+  .bulletin-current {
+    padding: 30px 36px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 30px;
+    background: linear-gradient(180deg, var(--parchment-2), var(--parchment-3));
+  }
+  .bulletin-current .big-num {
+    font-family: var(--serif-head);
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .bulletin-current .label {
+    font-family: var(--serif-display);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--gold-deep);
+    margin-bottom: 8px;
+  }
+  .bulletin-current .sub {
+    font-family: var(--serif-head); font-style: italic;
+    color: var(--ink-soft); margin-top: 6px; font-size: 16px;
+  }
+  .bulletin-current .delta-up { color: #2a6b3a; font-style: normal; }
+  .bulletin-current .small-val {
+    font-family: var(--serif-head);
+    font-size: 24px;
+    color: var(--navy); font-weight: 500;
+  }
+
+  .headline-banner {
+    background: var(--navy);
+    color: var(--parchment);
+    padding: 18px 36px;
+    font-family: var(--serif-head);
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 500;
+    text-align: center;
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    letter-spacing: 0.005em;
+  }
+  .headline-banner em {
+    color: var(--gold-light); font-style: italic;
+  }
+  .headline-banner .pre {
+    font-family: var(--serif-display);
+    font-size: 10px; letter-spacing: 0.32em;
+    color: var(--gold); display: block; margin-bottom: 2px;
+  }
+
+  /* ladder of targets */
+  .ladder { padding: 8px 36px 32px; }
+  .ladder-row {
+    display: grid;
+    grid-template-columns: 32px 1.4fr 1fr 80px;
+    gap: 20px;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px dashed var(--rule);
+    position: relative;
+  }
+  .ladder-row:last-child { border-bottom: none; }
+  .ladder-row .rank {
+    font-family: var(--serif-display);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-align: right;
+  }
+  .ladder-row .name {
+    font-family: var(--serif-head);
+    font-size: 19px;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .ladder-row .name .flag-dot {
+    display: inline-block;
+    width: 22px; height: 14px;
+    vertical-align: middle;
+    margin-right: 10px;
+    border: 1px solid var(--rule);
+    background: var(--parchment-3);
+  }
+  .ladder-row .name .sub {
+    display: block;
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--muted);
+    margin-left: 32px;
+    margin-top: 2px;
+  }
+  .ladder-row .gdp-val {
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    color: var(--ink);
+    text-align: right;
+  }
+  .ladder-row .gdp-val b { color: var(--navy); }
+  .ladder-row .bar-cell { grid-column: 2 / 5; padding-top: 4px; }
+  .ladder-row .bar {
+    height: 12px;
+    background: var(--parchment-3);
+    border: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .ladder-row .bar .fill {
+    position: absolute;
+    inset: 0;
+    width: var(--pct, 0%);
+    background:
+      repeating-linear-gradient(135deg,
+        var(--navy) 0 8px,
+        var(--navy-soft) 8px 16px);
+  }
+  .ladder-row .bar .fill.flipped {
+    background: repeating-linear-gradient(135deg,
+      var(--gold-deep) 0 8px,
+      var(--gold) 8px 16px);
+    width: 100%;
+  }
+  .ladder-row .bar .marker {
+    position: absolute;
+    right: 0; top: -3px; bottom: -3px;
+    border-left: 1px solid var(--navy);
+  }
+  .ladder-row .pct {
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+    color: var(--ink);
+    text-align: right;
+  }
+
+  /* flipped stamp */
+  .ladder-row.flipped {
+    opacity: 0.95;
+  }
+  .ladder-row.flipped .name,
+  .ladder-row.flipped .gdp-val,
+  .ladder-row.flipped .pct,
+  .ladder-row.flipped .rank {
+    color: var(--muted);
+  }
+  .ladder-row.flipped .name b { text-decoration: line-through; text-decoration-color: rgba(168,38,42,0.5); }
+
+  .stamp {
+    display: inline-block;
+    border: 2.5px solid var(--stamp);
+    color: var(--stamp);
+    font-family: var(--serif-display);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    padding: 4px 10px 3px;
+    transform: rotate(-6deg);
+    text-transform: uppercase;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.0);
+    text-align: center;
+    line-height: 1.1;
+    box-shadow: inset 0 0 0 1px rgba(168,38,42,0.4);
+    white-space: nowrap;
+    user-select: none;
+  }
+  .stamp small { display: block; font-size: 8px; letter-spacing: 0.22em; opacity: 0.85; margin-top: 2px; }
+
+  .bulletin-foot {
+    padding: 20px 36px;
+    border-top: 1px solid var(--rule);
+    background: var(--parchment-3);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 14px;
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .bulletin-foot .sig {
+    font-family: var(--serif-head);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink);
+  }
+
+  /* --------------------------------------------------------------------- */
+  /*  HEAD OF STATE                                                        */
+  /* --------------------------------------------------------------------- */
+  .president {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .portrait-frame {
+    background: var(--parchment-2);
+    padding: 16px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), inset 0 0 0 3px var(--parchment);
+  }
+  .portrait-frame .inner {
+    border: 2px solid var(--navy);
+    padding: 8px;
+    background: linear-gradient(180deg, #e7d6a4, #c9b073);
+    position: relative;
+  }
+  .portrait-frame .inner::after {
+    content: ""; position: absolute; inset: 3px;
+    border: 1px solid rgba(11,37,69,0.4); pointer-events: none;
+  }
+  .portrait-frame svg { display: block; width: 100%; height: auto; }
+  .portrait-frame .plaque {
+    background: var(--navy);
+    color: var(--gold-light);
+    text-align: center;
+    padding: 10px 8px;
+    margin-top: 14px;
+    font-family: var(--serif-display);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    border: 1px solid var(--gold-deep);
+  }
+  .portrait-frame .plaque b { color: #f5e7be; display: block; font-size: 14px; letter-spacing: 0.16em; margin-bottom: 3px; }
+
+  .president .bio h3 {
+    margin: 0 0 6px;
+    font-family: var(--serif-head);
+    font-weight: 500;
+    color: var(--navy);
+    font-size: clamp(30px, 3.6vw, 42px);
+    line-height: 1.05;
+  }
+  .president .bio .role {
+    font-family: var(--serif-head);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 18px;
+    margin-bottom: 22px;
+  }
+  .president .bio .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 22px;
+  }
+  .president .bio .detail-grid div {
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .president .bio .detail-grid div:nth-last-child(-n+2) { border-bottom: none; }
+  .president .bio .detail-grid .k {
+    font-family: var(--serif-display);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--gold-deep);
+    margin-bottom: 4px;
+  }
+  .president .bio .detail-grid .v {
+    font-family: var(--serif-head);
+    color: var(--ink);
+    font-size: 17px;
+  }
+  .president .bio p {
+    margin: 0 0 14px;
+    font-size: 18px;
+    color: var(--ink-soft);
+    text-align: justify;
+    hyphens: auto;
+  }
+  .president .bio .quote {
+    border-left: 3px solid var(--gold);
+    padding: 4px 0 4px 18px;
+    margin: 18px 0 0;
+    font-family: var(--serif-head);
+    font-style: italic;
+    color: var(--navy);
+    font-size: 20px;
+  }
+  .president .bio .quote .attr {
+    display: block;
+    font-style: normal;
+    font-family: var(--serif-display);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--gold-deep);
+    margin-top: 10px;
+  }
+
+  /* --------------------------------------------------------------------- */
+  /*  CONSTITUTION                                                         */
+  /* --------------------------------------------------------------------- */
+  .constitution {
+    background: var(--parchment-2);
+    border: 1px solid var(--rule);
+    padding: 56px clamp(28px, 6vw, 72px);
+    position: relative;
+    background-image:
+      linear-gradient(rgba(120,100,50,0.04) 1px, transparent 1px);
+    background-size: 100% 32px;
+    background-position: 0 56px;
+  }
+  .constitution::before, .constitution::after {
+    content: "";
+    position: absolute; left: 12px; right: 12px;
+    height: 1px; background: var(--gold);
+    opacity: 0.5;
+  }
+  .constitution::before { top: 12px; box-shadow: 0 4px 0 -3px var(--gold); }
+  .constitution::after  { bottom: 12px; box-shadow: 0 -4px 0 -3px var(--gold); }
+
+  .constitution .doc-title {
+    text-align: center;
+    font-family: var(--serif-display);
+    color: var(--navy);
+    font-weight: 600;
+    font-size: clamp(26px, 3.4vw, 38px);
+    letter-spacing: 0.16em;
+    margin: 0 0 6px;
+  }
+  .constitution .doc-sub {
+    text-align: center;
+    font-family: var(--serif-head);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 18px;
+    margin: 0 0 36px;
+  }
+  .preamble {
+    font-family: var(--serif-head);
+    font-size: 21px;
+    text-align: center;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 60ch;
+    margin: 0 auto 32px;
+  }
+  .preamble::first-letter {
+    font-family: var(--serif-display);
+    font-size: 3em;
+    float: left;
+    line-height: 0.85;
+    padding: 6px 10px 0 0;
+    color: var(--navy);
+  }
+
+  .article {
+    margin: 28px 0;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 28px;
+  }
+  .article .art-num {
+    font-family: var(--serif-display);
+    font-weight: 600;
+    color: var(--gold-deep);
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    text-align: right;
+    padding-top: 4px;
+    border-right: 1px solid var(--rule);
+    padding-right: 18px;
+  }
+  .article .art-num b { display: block; color: var(--navy); font-size: 22px; letter-spacing: 0.1em; margin-bottom: 4px; }
+  .article .art-body h4 {
+    margin: 0 0 8px;
+    font-family: var(--serif-head);
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 20px;
+  }
+  .article .art-body p {
+    margin: 0;
+    font-size: 17px;
+    color: var(--ink);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .signed-by {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    text-align: center;
+  }
+  .signed-by .sig-line {
+    font-family: "Brush Script MT", "Cormorant Garamond", cursive;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--navy);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
+  .signed-by .sig-meta {
+    font-family: var(--serif-display);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--muted);
+  }
+  .signed-by .sig-meta b { color: var(--ink); display: block; margin-bottom: 2px; }
+
+  .wax-seal {
+    width: 84px; height: 84px;
+    margin: 30px auto 0;
+  }
+
+  /* --------------------------------------------------------------------- */
+  /*  CITIZENSHIP                                                          */
+  /* --------------------------------------------------------------------- */
+  .citizen-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .enroll-notice {
+    background: var(--parchment-2);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--gold);
+    padding: 32px 36px;
+    position: relative;
+  }
+  .enroll-notice .notice-head {
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 18px; margin-bottom: 22px;
+  }
+  .enroll-notice .notice-head .form-no {
+    font-family: var(--serif-display);
+    font-size: 10px; letter-spacing: 0.3em; color: var(--gold-deep);
+  }
+  .enroll-notice .notice-head h4 {
+    margin: 6px 0 4px;
+    font-family: var(--serif-display);
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 22px;
+    letter-spacing: 0.14em;
+  }
+  .enroll-notice .notice-head .sub {
+    font-family: var(--serif-head); font-style: italic;
+    color: var(--ink-soft); font-size: 15px;
+  }
+
+  .enroll-notice ol {
+    padding-left: 0; list-style: none;
+    counter-reset: step;
+  }
+  .enroll-notice ol li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .enroll-notice ol li:last-child { border-bottom: none; }
+  .enroll-notice ol li::before {
+    content: counter(step, upper-roman) ".";
+    font-family: var(--serif-display);
+    font-weight: 600;
+    color: var(--gold-deep);
+    letter-spacing: 0.06em;
+    text-align: right;
+  }
+  .enroll-notice ol li b { color: var(--navy); }
+  .enroll-notice ol li .desc {
+    color: var(--ink); font-size: 16px;
+  }
+  .enroll-notice ol li .desc i { color: var(--muted); font-style: italic; }
+
+  .enroll-notice .cta {
+    margin-top: 24px;
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    font-family: var(--serif-display);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    padding: 14px 22px;
+    text-transform: uppercase;
+    border: 1px solid var(--navy);
+    background: var(--navy);
+    color: var(--parchment);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn:hover { background: var(--navy-deep); }
+  .btn.ghost {
+    background: transparent; color: var(--navy);
+  }
+  .btn.ghost:hover { background: rgba(11,37,69,0.06); }
+
+  .passport {
+    background: var(--navy);
+    color: var(--parchment);
+    border: 1px solid var(--gold-deep);
+    padding: 28px 30px;
+    position: relative;
+    aspect-ratio: 5 / 7;
+    display: flex; flex-direction: column;
+    box-shadow:
+      0 1px 0 rgba(0,0,0,0.1),
+      inset 0 0 0 4px var(--navy),
+      inset 0 0 0 5px var(--gold-deep),
+      inset 0 0 0 12px var(--navy);
+  }
+  .passport .pp-top {
+    text-align: center;
+    font-family: var(--serif-display);
+    color: var(--gold-light);
+    font-size: 10px; letter-spacing: 0.3em;
+    border-bottom: 1px solid rgba(216,179,102,0.35);
+    padding-bottom: 18px; margin-bottom: 18px;
+  }
+  .passport .pp-top b { display: block; color: #f5e7be; font-size: 16px; letter-spacing: 0.18em; margin: 6px 0 4px; }
+  .passport .pp-seal {
+    margin: 12px auto 18px;
+    width: 130px; height: 130px;
+  }
+  .passport .pp-bot {
+    margin-top: auto;
+    border-top: 1px solid rgba(216,179,102,0.35);
+    padding-top: 16px;
+    font-family: "Courier New", monospace;
+    font-size: 11px; line-height: 1.7;
+    color: #d8c896;
+  }
+  .passport .pp-bot .row { display: flex; justify-content: space-between; gap: 12px; }
+  .passport .pp-bot b { color: #f5e7be; font-weight: 700; }
+
+  /* --------------------------------------------------------------------- */
+  /*  FOOTER                                                               */
+  /* --------------------------------------------------------------------- */
+  footer.nat-foot {
+    background: var(--navy-deep);
+    color: #cbb87c;
+    border-top: 4px double var(--gold);
+    margin-top: 64px;
+  }
+  .nat-foot-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 28px 28px;
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  .nat-foot h5 {
+    font-family: var(--serif-display);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    color: #f5e7be;
+    margin: 0 0 14px;
+    text-transform: uppercase;
+  }
+  .nat-foot a {
+    display: block;
+    color: #cbb87c;
+    border: none;
+    font-family: var(--serif-body);
+    font-size: 15px;
+    padding: 4px 0;
+  }
+  .nat-foot a:hover { color: #f5e7be; }
+  .nat-foot .colofon {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(216,179,102,0.25);
+    padding-top: 18px;
+    margin-top: 14px;
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 10px;
+    font-family: var(--serif-body); font-style: italic;
+    font-size: 13px;
+    color: #a59565;
+  }
+  .nat-foot .seal-mini { width: 110px; height: 110px; }
+
+  /* --------------------------------------------------------------------- */
+  /*  Responsive                                                           */
+  /* --------------------------------------------------------------------- */
+  @media (max-width: 900px) {
+    .nat-header-inner { grid-template-columns: 90px 1fr; }
+    .nat-header .flag-pole { display: none; }
+    .nat-header .seal { width: 90px; height: 90px; }
+    .nat-header h1 { text-align: left; }
+    .nat-header .motto { text-align: left; }
+    .nat-header .motto::before { display: none; }
+
+    .bulletin-current { grid-template-columns: 1fr; gap: 18px; }
+    .ladder-row {
+      grid-template-columns: 28px 1fr 90px;
+      gap: 12px;
+    }
+    .ladder-row .gdp-val { grid-column: 2 / 4; text-align: left; margin-top: -10px; padding-left: 32px; }
+    .ladder-row .bar-cell { grid-column: 1 / 4; }
+
+    .president { grid-template-columns: 1fr; }
+    .portrait-frame { max-width: 320px; }
+
+    .citizen-grid { grid-template-columns: 1fr; }
+    .passport { max-width: 360px; }
+
+    .article { grid-template-columns: 1fr; gap: 6px; }
+    .article .art-num { text-align: left; border-right: none; border-bottom: 1px solid var(--rule); padding: 0 0 6px; }
+
+    .signed-by { grid-template-columns: 1fr; gap: 32px; }
+    .nat-foot-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 540px) {
+    body { font-size: 16px; }
+    .section { padding: 48px 0 36px; }
+    .bulletin-head { grid-template-columns: 1fr; }
+    .bulletin-head .right { text-align: left; }
+    .nat-foot-inner { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== TOP STRIP ====== -->
+<div class="gov-strip" role="banner">
+  <div class="gov-strip-inner">
+    <svg class="tiny-seal" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="14" fill="none" stroke="#cbb87c" stroke-width="1.5"/>
+      <circle cx="16" cy="16" r="9" fill="#cbb87c"/>
+      <path d="M11 14 q5 -6 10 0 v3 q-5 4 -10 0 z" fill="#1a1a14"/>
+    </svg>
+    <span><strong>An official portal of the Sovereign Republic of Dogestan.</strong></span>
+    <span class="pipe">|</span>
+    <span>Here&rsquo;s how you know <span style="color:#cbb87c">↓</span></span>
+    <span style="margin-left:auto; opacity:0.7;">🔒 dogestan.gov.dg &nbsp; · &nbsp; Verified on-chain</span>
+  </div>
+</div>
+
+<!-- ====== NATIONAL HEADER ====== -->
+<header class="nat-header" data-screen-label="National Header">
+  <div class="nat-header-inner">
+    <div class="seal-wrap">
+      <!-- ============ SEAL ============ -->
+      <svg class="seal" viewBox="0 0 200 200" aria-label="National Seal of the Sovereign Republic of Dogestan">
+        <defs>
+          <radialGradient id="sealG" cx="50%" cy="45%" r="60%">
+            <stop offset="0%" stop-color="#f0d68a"/>
+            <stop offset="70%" stop-color="#c89a3e"/>
+            <stop offset="100%" stop-color="#8a6826"/>
+          </radialGradient>
+          <path id="sealCircleTop" d="M 100,100 m -80,0 a 80,80 0 1,1 160,0" />
+          <path id="sealCircleBot" d="M 100,100 m -75,0 a 75,75 0 1,0 150,0" />
+        </defs>
+
+        <!-- outer rope ring -->
+        <circle cx="100" cy="100" r="94" fill="none" stroke="#d8b366" stroke-width="1.2" stroke-dasharray="2 3"/>
+        <circle cx="100" cy="100" r="90" fill="url(#sealG)" stroke="#5a3f12" stroke-width="2"/>
+        <circle cx="100" cy="100" r="86" fill="none" stroke="#5a3f12" stroke-width="0.8"/>
+
+        <!-- text around the perimeter -->
+        <text font-family="Cinzel, serif" font-size="11" font-weight="600" fill="#1a1a14" letter-spacing="2.5">
+          <textPath href="#sealCircleTop" startOffset="50%" text-anchor="middle">SOVEREIGN REPUBLIC OF DOGESTAN</textPath>
+        </text>
+        <text font-family="Cinzel, serif" font-size="9" font-weight="500" fill="#1a1a14" letter-spacing="3.5">
+          <textPath href="#sealCircleBot" startOffset="50%" text-anchor="middle">★  EST. MMXXIV  ·  ON-CHAIN  ·  ★</textPath>
+        </text>
+
+        <!-- inner field -->
+        <circle cx="100" cy="106" r="60" fill="#0b2545" stroke="#5a3f12" stroke-width="1.2"/>
+        <circle cx="100" cy="106" r="57" fill="none" stroke="#d8b366" stroke-width="0.6"/>
+
+        <!-- laurel left -->
+        <g stroke="#d8b366" stroke-width="1.1" fill="none" opacity="0.85">
+          <path d="M55,130 q-6,-22 4,-46"/>
+          <g>
+            <ellipse cx="51" cy="120" rx="6" ry="2.4" transform="rotate(-30 51 120)" fill="#d8b366"/>
+            <ellipse cx="49" cy="110" rx="6" ry="2.4" transform="rotate(-22 49 110)" fill="#d8b366"/>
+            <ellipse cx="49" cy="100" rx="6" ry="2.4" transform="rotate(-12 49 100)" fill="#d8b366"/>
+            <ellipse cx="51" cy="90"  rx="6" ry="2.4" transform="rotate(0 51 90)"   fill="#d8b366"/>
+            <ellipse cx="54" cy="80"  rx="5" ry="2.2" transform="rotate(15 54 80)"  fill="#d8b366"/>
+          </g>
+        </g>
+        <!-- laurel right -->
+        <g stroke="#d8b366" stroke-width="1.1" fill="none" opacity="0.85">
+          <path d="M145,130 q6,-22 -4,-46"/>
+          <g>
+            <ellipse cx="149" cy="120" rx="6" ry="2.4" transform="rotate(30 149 120)" fill="#d8b366"/>
+            <ellipse cx="151" cy="110" rx="6" ry="2.4" transform="rotate(22 151 110)" fill="#d8b366"/>
+            <ellipse cx="151" cy="100" rx="6" ry="2.4" transform="rotate(12 151 100)" fill="#d8b366"/>
+            <ellipse cx="149" cy="90"  rx="6" ry="2.4" transform="rotate(0 149 90)"   fill="#d8b366"/>
+            <ellipse cx="146" cy="80"  rx="5" ry="2.2" transform="rotate(-15 146 80)" fill="#d8b366"/>
+          </g>
+        </g>
+
+        <!-- shiba bust silhouette -->
+        <g fill="#d8b366" stroke="#8a6826" stroke-width="0.8">
+          <!-- head -->
+          <path d="M100 78
+                   c -10 0 -16 5 -20 12
+                   c -2 4 -2 9 0 13
+                   c 1 3 4 6 8 8
+                   c 3 1 6 2 6 5
+                   l 0 6
+                   l 12 0
+                   l 0 -6
+                   c 0 -3 3 -4 6 -5
+                   c 4 -2 7 -5 8 -8
+                   c 2 -4 2 -9 0 -13
+                   c -4 -7 -10 -12 -20 -12 z"/>
+          <!-- ears -->
+          <path d="M84 78 l -4 -12 l 10 6 z" fill="#b48a3d"/>
+          <path d="M116 78 l 4 -12 l -10 6 z" fill="#b48a3d"/>
+          <!-- face mask blaze -->
+          <path d="M94 93 c 3 -4 9 -4 12 0 l -2 14 l -8 0 z" fill="#f0d68a" stroke="none"/>
+          <!-- eyes -->
+          <ellipse cx="92" cy="96" rx="1.6" ry="2" fill="#0b2545" stroke="none"/>
+          <ellipse cx="108" cy="96" rx="1.6" ry="2" fill="#0b2545" stroke="none"/>
+          <!-- nose -->
+          <path d="M98 104 l 4 0 l -2 3 z" fill="#0b2545" stroke="none"/>
+          <!-- collar -->
+          <rect x="86" y="118" width="28" height="4" fill="#a8262a" stroke="#5a3f12" stroke-width="0.4"/>
+          <circle cx="100" cy="120" r="2" fill="#f0d68a" stroke="#5a3f12" stroke-width="0.4"/>
+        </g>
+
+        <!-- ribbon banner with motto -->
+        <g>
+          <path d="M30,150 q70,28 140,0 l -4,18 q-66,22 -132,0 z"
+                fill="#a8262a" stroke="#5a3f12" stroke-width="1"/>
+          <path d="M30,150 l -6,8 l 10,6 z" fill="#7a1c1f" stroke="#5a3f12" stroke-width="0.6"/>
+          <path d="M170,150 l 6,8 l -10,6 z" fill="#7a1c1f" stroke="#5a3f12" stroke-width="0.6"/>
+          <text x="100" y="166" text-anchor="middle"
+                font-family="Cinzel, serif" font-size="9" font-weight="600"
+                fill="#f0d68a" letter-spacing="2">AD LUNAM PER FIDEM</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="title-wrap">
+      <h1>
+        <span class="h1-small">The Sovereign Republic of</span>
+        DOGESTAN
+      </h1>
+      <div class="motto"><span>To the Moon, Through Faith</span></div>
+    </div>
+
+    <div class="flag-pole">
+      <div class="flag" aria-label="National flag">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="11" fill="none" stroke="#d8b366" stroke-width="1"/>
+          <path d="M11 14 q5 -6 10 0 v3 q-5 4 -10 0 z" fill="#d8b366"/>
+        </svg>
+      </div>
+      <span>NATIONAL ENSIGN</span>
+    </div>
+  </div>
+
+  <nav class="nat-nav" aria-label="Primary">
+    <div class="nat-nav-inner">
+      <a href="#president">Office of the President</a>
+      <a href="#treasury">Ministry of the Treasury</a>
+      <a href="#citizenship">Department of Citizenship</a>
+      <a href="#constitution">The Constitution</a>
+      <a href="#bulletin">Economic Bulletins</a>
+      <a href="#contact" style="margin-left:auto;">Foreign Relations</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero" id="declaration" data-screen-label="Founding Declaration">
+    <div class="doc-meta">
+      <span><b>ISSUED</b> · 14 Brumaire MMXXIV</span>
+      <span><b>BY</b> · The Founding Wallet</span>
+      <span><b>STATUS</b> · In perpetuity</span>
+    </div>
+    <h2>By Decree of the People,<br>and the <em>Mempool</em>.</h2>
+    <p class="declaration">
+      Whereas all prior nations have been bound to the inconvenience of land,
+      borders, customs houses, and rainfall &mdash; the Sovereign Republic of Dogestan hereby declares itself
+      the first nation in recorded history to consist <em>solely</em> of a contract address.
+      We have no territory. We have no airport. We have a verified mainnet deployment, and that
+      is enough.
+    </p>
+
+    <div class="registry">
+      <div class="reg-head">Registry of Incorporation &nbsp;·&nbsp; National Charter №&nbsp;000001</div>
+      <div class="reg-no"><b>CA</b> &nbsp;0xD06E57AN42069B1n6u5F1r57Pr351D3n7C0n7r4c7</div>
+      <div class="reg-foot">Filed on the public ledger. Witnessed by 14,221 nodes. Verifiable from any sovereign device.</div>
+    </div>
+
+    <div class="pair">
+      <div class="stat-card">
+        <div class="label">Population</div>
+        <div class="val">24,118 citizens</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Land Mass</div>
+        <div class="val">0 km<sup>2</sup></div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Time Zone</div>
+        <div class="val">UTC +∞</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">National Animal</div>
+        <div class="val">The Shiba</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== GDP FLIP TRACKER ====== -->
+  <section class="section" id="bulletin" data-screen-label="GDP Flip Tracker">
+    <p class="eyebrow center">Office of National Statistics · Bulletin No. 0017</p>
+    <h2 class="section-title">The GDP Flip Tracker</h2>
+    <p class="section-lede">A continuously-updated ledger of the foreign economies our Republic has surpassed,
+       is about to surpass, and shall, in the fullness of time, surpass.</p>
+
+    <div class="bulletin-frame">
+
+      <div class="bulletin-head">
+        <div class="left">
+          <div class="issuer">Office of the Ministry of the Treasury</div>
+          <h3>Official Economic Bulletin</h3>
+        </div>
+        <div class="right">
+          <span class="lineitem"><b>Published</b> &nbsp; 11:42 UTC, this morning</span>
+          <span class="lineitem"><b>Reporting period</b> &nbsp; Block 18,234,567 → 18,235,001</span>
+          <span class="lineitem"><b>Methodology</b> &nbsp; Spot market capitalisation</span>
+        </div>
+      </div>
+
+      <div class="bulletin-current">
+        <div>
+          <div class="label">National GDP — Current</div>
+          <div class="big-num">$1,247,318</div>
+          <div class="sub"><span class="delta-up">▲ +18.4%</span> &nbsp; vs. previous bulletin</div>
+        </div>
+        <div>
+          <div class="label">Treasury Reserves</div>
+          <div class="small-val">$184,920</div>
+          <div class="sub">Held in liquidity, ETH-denominated.</div>
+        </div>
+        <div>
+          <div class="label">Citizens Enrolled</div>
+          <div class="small-val">24,118</div>
+          <div class="sub">+412 in the last 24 hours.</div>
+        </div>
+      </div>
+
+      <div class="headline-banner">
+        <span class="pre">Today&rsquo;s headline</span>
+        We are now richer than &nbsp;<em>The Pitcairn Islands.</em>
+      </div>
+
+      <div class="ladder">
+        <!-- row template:
+          rank | name+sub | gdp-val | pct
+          bar-cell spans
+        -->
+
+        <!-- FLIPPED: Pitcairn -->
+        <div class="ladder-row flipped" style="--pct: 100%;">
+          <div class="rank">I.</div>
+          <div class="name">
+            <span class="flag-dot" style="background:linear-gradient(180deg,#1a4789 50%, #c8102e 50%);"></span>
+            <b>The Pitcairn Islands</b>
+            <span class="sub">Pacific dependency &mdash; population 47.</span>
+          </div>
+          <div class="gdp-val"><b>$5,000,000</b><br>est. GDP</div>
+          <div><span class="stamp">Flipped<small>BL. 18,201,440</small></span></div>
+          <div class="bar-cell">
+            <div class="bar"><div class="fill flipped"></div></div>
+          </div>
+        </div>
+
+        <!-- Active target: Tokelau -->
+        <div class="ladder-row" style="--pct: 12.5%;">
+          <div class="rank">II.</div>
+          <div class="name">
+            <span class="flag-dot" style="background:linear-gradient(180deg,#0064b1 50%, #fcd116 50%);"></span>
+            <b>Tokelau</b>
+            <span class="sub">Polynesian protectorate &mdash; three atolls.</span>
+          </div>
+          <div class="gdp-val"><b>$10,000,000</b><br>est. GDP</div>
+          <div class="pct">12.5%</div>
+          <div class="bar-cell">
+            <div class="bar"><div class="fill"></div><div class="marker"></div></div>
+          </div>
+        </div>
+
+        <!-- Saint Helena -->
+        <div class="ladder-row" style="--pct: 2.5%;">
+          <div class="rank">III.</div>
+          <div class="name">
+            <span class="flag-dot" style="background:linear-gradient(180deg,#012169 50%, #c8102e 50%);"></span>
+            <b>Saint Helena</b>
+            <span class="sub">South Atlantic territory; exiled an emperor here.</span>
+          </div>
+          <div class="gdp-val"><b>$50,000,000</b><br>est. GDP</div>
+          <div class="pct">2.5%</div>
+          <div class="bar-cell">
+            <div class="bar"><div class="fill"></div></div>
+          </div>
+        </div>
+
+        <!-- Tuvalu -->
+        <div class="ladder-row" style="--pct: 2.0%;">
+          <div class="rank">IV.</div>
+          <div class="name">
+            <span class="flag-dot" style="background:linear-gradient(180deg,#418fde 50%, #fff4a3 50%);"></span>
+            <b>Tuvalu</b>
+            <span class="sub">Sovereign island state &mdash; population 11,500.</span>
+          </div>
+          <div class="gdp-val"><b>$63,000,000</b><br>est. GDP</div>
+          <div class="pct">2.0%</div>
+          <div class="bar-cell">
+            <div class="bar"><div class="fill"></div></div>
+          </div>
+        </div>
+
+        <!-- Nauru -->
+        <div class="ladder-row" style="--pct: 0.78%;">
+          <div class="rank">V.</div>
+          <div class="name">
+            <span class="flag-dot" style="background:linear-gradient(180deg,#002b7f 50%, #ffc61e 50%);"></span>
+            <b>Nauru</b>
+            <span class="sub">Smallest republic on Earth.</span>
+          </div>
+          <div class="gdp-val"><b>$160,000,000</b><br>est. GDP</div>
+          <div class="pct">0.78%</div>
+          <div class="bar-cell">
+            <div class="bar"><div class="fill"></div></div>
+          </div>
+        </div>
+
+        <!-- Palau -->
+        <div class="ladder-row" style="--pct: 0.42%;">
+          <div class="rank">VI.</div>
+          <div class="name">
+            <span class="flag-dot" style="background:linear-gradient(180deg,#4aadd6 60%, #ffde00 60%);"></span>
+            <b>The Republic of Palau</b>
+            <span class="sub">Western Pacific. Famous for jellyfish.</span>
+          </div>
+          <div class="gdp-val"><b>$300,000,000</b><br>est. GDP</div>
+          <div class="pct">0.42%</div>
+          <div class="bar-cell">
+            <div class="bar"><div class="fill"></div></div>
+          </div>
+        </div>
+
+        <!-- Central African Republic -->
+        <div class="ladder-row" style="--pct: 0.05%;">
+          <div class="rank">VII.</div>
+          <div class="name">
+            <span class="flag-dot" style="background:linear-gradient(180deg,#003082 33%, #fcd116 66%, #009543 100%);"></span>
+            <b>Central African Republic</b>
+            <span class="sub">Bitcoin was, briefly, legal tender here.</span>
+          </div>
+          <div class="gdp-val"><b>$2,500,000,000</b><br>est. GDP</div>
+          <div class="pct">0.05%</div>
+          <div class="bar-cell">
+            <div class="bar"><div class="fill"></div></div>
+          </div>
+        </div>
+
+        <!-- Argentina -->
+        <div class="ladder-row" style="--pct: 0.0002%;">
+          <div class="rank">VIII.</div>
+          <div class="name">
+            <span class="flag-dot" style="background:linear-gradient(180deg,#74acdf 50%, #fff 50%);"></span>
+            <b>The Argentine Republic</b>
+            <span class="sub">A nation with which we share a passion for novel currencies.</span>
+          </div>
+          <div class="gdp-val"><b>$640,000,000,000</b><br>est. GDP</div>
+          <div class="pct">&lt; 0.01%</div>
+          <div class="bar-cell">
+            <div class="bar"><div class="fill"></div></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bulletin-foot">
+        <div>
+          Bulletins are issued every block. &nbsp; All figures &mdash; ours and theirs &mdash; are public.
+        </div>
+        <div class="sig">— J. Wagmi, Chief Statistician</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ====== PRESIDENT ====== -->
+  <section class="section" id="president" data-screen-label="Office of the President">
+    <p class="eyebrow">Office of the President &mdash; Profile</p>
+    <h2 class="section-title">President Bingus the First</h2>
+    <p class="section-lede">Head of State, Commander of the Chain, and Chief Steward of the Treasury &mdash;
+       elected unanimously by the founding wallet, in a vote of one to nothing.</p>
+
+    <div class="president">
+
+      <div class="portrait-frame">
+        <div class="inner">
+          <svg viewBox="0 0 200 240" aria-label="Official portrait of President Bingus the First">
+            <!-- backdrop drape -->
+            <rect width="200" height="240" fill="#1a3a64"/>
+            <path d="M0 0 L200 0 L200 90 Q100 130 0 90 Z" fill="#0b2545" opacity="0.6"/>
+            <!-- column hints -->
+            <rect x="6" y="0" width="6" height="240" fill="#0b2545" opacity="0.4"/>
+            <rect x="188" y="0" width="6" height="240" fill="#0b2545" opacity="0.4"/>
+
+            <!-- body / robes -->
+            <path d="M 60 240 L 60 200
+                     Q 60 168 100 160
+                     Q 140 168 140 200
+                     L 140 240 Z" fill="#0a1f3d" stroke="#5a3f12" stroke-width="0.6"/>
+            <!-- sash -->
+            <path d="M 70 175 L 100 240 L 92 240 L 62 178 Z" fill="#a8262a" stroke="#5a3f12" stroke-width="0.4"/>
+            <!-- medal -->
+            <circle cx="118" cy="200" r="6" fill="#d8b366" stroke="#5a3f12" stroke-width="0.6"/>
+            <rect x="116" y="184" width="4" height="16" fill="#a8262a"/>
+
+            <!-- neck/collar -->
+            <rect x="92" y="155" width="16" height="10" fill="#f0d68a"/>
+
+            <!-- head (shiba/cat-like serious mascot) -->
+            <g>
+              <!-- ears -->
+              <path d="M70 100 L 64 76 L 86 92 Z" fill="#b48a3d" stroke="#5a3f12" stroke-width="0.6"/>
+              <path d="M130 100 L 136 76 L 114 92 Z" fill="#b48a3d" stroke="#5a3f12" stroke-width="0.6"/>
+              <path d="M73 96 L 70 82 L 82 91 Z" fill="#f0d68a"/>
+              <path d="M127 96 L 130 82 L 118 91 Z" fill="#f0d68a"/>
+
+              <!-- head -->
+              <path d="M100 84
+                       c -22 0 -34 14 -34 32
+                       c 0 14 6 24 14 30
+                       c 5 4 12 6 20 6
+                       c 8 0 15 -2 20 -6
+                       c 8 -6 14 -16 14 -30
+                       c 0 -18 -12 -32 -34 -32 z"
+                    fill="#d8b366" stroke="#5a3f12" stroke-width="0.8"/>
+
+              <!-- face blaze (lighter mask) -->
+              <path d="M86 116
+                       q14 -16 28 0
+                       l -3 24
+                       q-11 6 -22 0 z"
+                    fill="#f3e1b3"/>
+
+              <!-- brow furrow (dignified) -->
+              <path d="M84 110 q6 -3 12 0" stroke="#5a3f12" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+              <path d="M104 110 q6 -3 12 0" stroke="#5a3f12" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+              <!-- eyes -->
+              <ellipse cx="89" cy="118" rx="2.4" ry="3" fill="#0b1a30"/>
+              <ellipse cx="111" cy="118" rx="2.4" ry="3" fill="#0b1a30"/>
+              <circle cx="90" cy="117" r="0.7" fill="#fff"/>
+              <circle cx="112" cy="117" r="0.7" fill="#fff"/>
+
+              <!-- nose -->
+              <path d="M96 130 l 8 0 l -4 5 z" fill="#0b1a30"/>
+
+              <!-- mouth (slightly serious, hint of smile) -->
+              <path d="M100 135 q -6 8 -12 5" stroke="#5a3f12" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+              <path d="M100 135 q 6 8 12 5" stroke="#5a3f12" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+              <!-- whisker dots -->
+              <g fill="#5a3f12">
+                <circle cx="86" cy="138" r="0.6"/>
+                <circle cx="89" cy="141" r="0.6"/>
+                <circle cx="114" cy="138" r="0.6"/>
+                <circle cx="111" cy="141" r="0.6"/>
+              </g>
+
+              <!-- tiny crown -->
+              <path d="M88 80 L 92 88 L 100 78 L 108 88 L 112 80 L 112 92 L 88 92 Z"
+                    fill="#d8b366" stroke="#5a3f12" stroke-width="0.6"/>
+              <circle cx="92" cy="86" r="1.4" fill="#a8262a"/>
+              <circle cx="100" cy="86" r="1.4" fill="#a8262a"/>
+              <circle cx="108" cy="86" r="1.4" fill="#a8262a"/>
+            </g>
+
+            <!-- frame footer caption inside the painting -->
+            <text x="100" y="232" text-anchor="middle"
+                  font-family="Cinzel, serif" font-size="6" fill="#d8b366" letter-spacing="2">
+              OFFICIAL PORTRAIT · MMXXIV
+            </text>
+          </svg>
+        </div>
+        <div class="plaque">
+          <b>BINGUS I.</b>
+          PRESIDENT OF THE REPUBLIC
+        </div>
+      </div>
+
+      <div class="bio">
+        <h3>His Excellency, Bingus the First</h3>
+        <div class="role">President of the Sovereign Republic of Dogestan &middot; First of His Name</div>
+
+        <div class="detail-grid">
+          <div>
+            <div class="k">Office</div>
+            <div class="v">Head of State &amp; Government</div>
+          </div>
+          <div>
+            <div class="k">Term</div>
+            <div class="v">Until liquidity is removed</div>
+          </div>
+          <div>
+            <div class="k">Sworn In</div>
+            <div class="v">Block 18,000,001</div>
+          </div>
+          <div>
+            <div class="k">Residence</div>
+            <div class="v">The Genesis Wallet</div>
+          </div>
+        </div>
+
+        <p>
+          President Bingus the First was elevated to the highest office of the Republic by acclamation
+          of the founding wallet, on the eve of the mainnet deployment. A statesman of few words and
+          fewer keystrokes, His Excellency holds 4.2&nbsp;% of the national supply in personal trust,
+          and has pledged not to liquidate his position before the second flip of Argentina.
+        </p>
+        <p>
+          Prior to assuming office, the President served with distinction as a jpeg, a desktop wallpaper,
+          and the cover image of three (3) unrelated Telegram groups. He is a graduate of the school of
+          life, and an honorary doctorate of the University of On-Chain Studies.
+        </p>
+
+        <blockquote class="quote">
+          &ldquo;A nation is not made of soil, nor borders, nor passports of paper. A nation is made of
+          conviction &mdash; and of a sufficiently liquid order book.&rdquo;
+          <span class="attr">— Inaugural Address, Block 18,000,001</span>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== CONSTITUTION ====== -->
+  <section class="section" id="constitution" data-screen-label="The Constitution">
+    <p class="eyebrow center">The Founding Document</p>
+    <h2 class="section-title" style="text-align:center;">The Constitution of Dogestan</h2>
+
+    <div class="ornament">❦ &nbsp;·&nbsp; ❦ &nbsp;·&nbsp; ❦</div>
+
+    <article class="constitution">
+      <div class="doc-title">THE CONSTITUTION</div>
+      <div class="doc-sub">of the Sovereign Republic of Dogestan &middot; Ratified at Block 18,000,000</div>
+
+      <p class="preamble">
+        We, the holders of the Dogestan token, in order to form a more liquid union, establish a
+        sovereignty unencumbered by geography, promote the general up-only, and secure the blessings
+        of yield to ourselves and our diamond-handed posterity, do ordain and establish this Constitution
+        for the Sovereign Republic of Dogestan.
+      </p>
+
+      <div class="article">
+        <div class="art-num"><b>I</b>OF SOVEREIGNTY</div>
+        <div class="art-body">
+          <h4>The Republic exists where the contract is verified.</h4>
+          <p>The Sovereign Republic of Dogestan shall consist of all addresses holding, at any block height,
+             one (1) or more units of the national token. The Republic has no physical territory,
+             requires none, and shall not, under any administration, acquire any.
+             A flagpole may be erected on Block 21,000,000 ceremonially.</p>
+        </div>
+      </div>
+
+      <div class="article">
+        <div class="art-num"><b>II</b>OF CITIZENSHIP</div>
+        <div class="art-body">
+          <h4>To hold the token is to be a citizen.</h4>
+          <p>Citizenship in the Republic is conferred automatically and irrevocably upon the receipt
+             of any non-zero balance of the national token. Citizenship may be transferred to a third
+             party at the citizen&rsquo;s discretion. Dual citizenship with other nations &mdash; including those
+             with land &mdash; is expressly permitted and quietly encouraged.</p>
+        </div>
+      </div>
+
+      <div class="article">
+        <div class="art-num"><b>III</b>OF THE TREASURY</div>
+        <div class="art-body">
+          <h4>The Treasury shall be public, on-chain, and immutable.</h4>
+          <p>All assets of the Republic shall be held in a multi-signature wallet, the signatories to which
+             are the President, the Minister of the Treasury, and a randomly-selected citizen drawn each
+             quarter. Any disbursement shall be subject to a public vote of no fewer than seventy-two (72)
+             hours. The Treasury may not be denominated in fiat currencies of any nation that has, in the
+             last decade, defaulted on its sovereign debt.</p>
+        </div>
+      </div>
+
+      <div class="article">
+        <div class="art-num"><b>IV</b>OF THE PRESIDENCY</div>
+        <div class="art-body">
+          <h4>The Head of State serves at the pleasure of liquidity.</h4>
+          <p>The President shall hold office for so long as the Republic maintains a market capitalisation
+             in excess of five hundred thousand United States dollars ($500,000). Should the Republic fall
+             below this threshold for fourteen (14) consecutive days, the office shall pass to the largest
+             remaining holder, who may not refuse.</p>
+        </div>
+      </div>
+
+      <div class="article">
+        <div class="art-num"><b>V</b>OF FOREIGN RELATIONS</div>
+        <div class="art-body">
+          <h4>We extend recognition to all nations, with or without land.</h4>
+          <p>The Republic shall maintain peaceful and respectful relations with all sovereign states,
+             whether constituted of soil, of charter, or of contract address. The Republic shall not engage
+             in war, having no army; nor in trade tariffs, having no border; nor in diplomatic intrigue,
+             having no ambassador. Memes may, however, be exchanged at par.</p>
+        </div>
+      </div>
+
+      <div class="article">
+        <div class="art-num"><b>VI</b>OF AMENDMENT</div>
+        <div class="art-body">
+          <h4>The Constitution may be amended by supermajority of token holders.</h4>
+          <p>Any amendment to this Constitution shall require the affirmative vote of two-thirds (²⁄₃)
+             of the supply, measured by token weight, over a period of no fewer than seven (7) days.
+             The text of this Constitution, once ratified, shall be inscribed on-chain in calldata,
+             and shall not be removable while a single node remains.</p>
+        </div>
+      </div>
+
+      <div class="signed-by">
+        <div>
+          <div class="sig-line">B. Bingus</div>
+          <div class="sig-meta"><b>BINGUS THE FIRST</b>President of the Republic</div>
+        </div>
+        <div>
+          <div class="sig-line">J. Wagmi</div>
+          <div class="sig-meta"><b>JEREMY WAGMI</b>Minister of the Treasury</div>
+        </div>
+        <div>
+          <div class="sig-line">A. Hodler</div>
+          <div class="sig-meta"><b>ANONYMOUS HODLER</b>Chief Justice, ad interim</div>
+        </div>
+      </div>
+
+      <!-- wax seal -->
+      <svg class="wax-seal" viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <radialGradient id="wax" cx="40%" cy="35%" r="65%">
+            <stop offset="0%" stop-color="#d44b50"/>
+            <stop offset="60%" stop-color="#a8262a"/>
+            <stop offset="100%" stop-color="#5a0f12"/>
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="40" fill="url(#wax)" stroke="#5a0f12" stroke-width="1"/>
+        <circle cx="50" cy="50" r="34" fill="none" stroke="#5a0f12" stroke-width="0.6"/>
+        <text x="50" y="44" text-anchor="middle"
+              font-family="Cinzel, serif" font-size="9" font-weight="700"
+              fill="#f0d68a" letter-spacing="1.5">SRD</text>
+        <text x="50" y="58" text-anchor="middle"
+              font-family="Cinzel, serif" font-size="6" font-weight="500"
+              fill="#f0d68a" letter-spacing="1.5">ON-CHAIN</text>
+        <text x="50" y="68" text-anchor="middle"
+              font-family="Cinzel, serif" font-size="6" font-weight="500"
+              fill="#f0d68a" letter-spacing="1.5">MMXXIV</text>
+      </svg>
+    </article>
+  </section>
+
+
+  <!-- ====== CITIZENSHIP ====== -->
+  <section class="section" id="citizenship" data-screen-label="Department of Citizenship">
+    <p class="eyebrow">Department of Citizenship &mdash; Enrolment</p>
+    <h2 class="section-title">Becoming a Citizen of Dogestan</h2>
+    <p class="section-lede">Citizenship is conferred by the act of holding the national token.
+       No paperwork is required. No oath is administered. The chain is the registrar.</p>
+
+    <div class="citizen-grid">
+
+      <div class="enroll-notice">
+        <div class="notice-head">
+          <div class="form-no">Form DG-001 · Notice of Enrolment</div>
+          <h4>OFFICIAL ENROLMENT INSTRUCTIONS</h4>
+          <div class="sub">Issued under authority of the Department of Citizenship.</div>
+        </div>
+
+        <ol>
+          <li>
+            <div class="desc">
+              <b>Connect a sovereign wallet.</b><br>
+              <i>A non-custodial wallet on the Ethereum mainnet is required. Hardware wallets are recognised as &ldquo;reinforced sovereign instruments&rdquo;.</i>
+            </div>
+          </li>
+          <li>
+            <div class="desc">
+              <b>Acquire one (1) or more units of the national token.</b><br>
+              <i>Any non-zero balance shall be sufficient. Fractional holdings are recognised as full citizenship for the purposes of voting and bragging.</i>
+            </div>
+          </li>
+          <li>
+            <div class="desc">
+              <b>Await on-chain confirmation.</b><br>
+              <i>Citizenship is conferred at the moment the transaction reaches finality. No further filings are required.</i>
+            </div>
+          </li>
+          <li>
+            <div class="desc">
+              <b>Optionally, declare yourself.</b><br>
+              <i>Citizens are invited &mdash; but not required &mdash; to update their on-chain profile, social handle, or telegram bio to reflect their new nationality.</i>
+            </div>
+          </li>
+        </ol>
+
+        <div class="cta">
+          <a class="btn" href="#">Open the Treasury</a>
+          <a class="btn ghost" href="#">Verify a Citizen</a>
+        </div>
+      </div>
+
+      <!-- Passport mockup -->
+      <div class="passport" aria-label="National passport of Dogestan">
+        <div class="pp-top">
+          PASSPORT &mdash; PASSEPORT &mdash; ПАСПОРТ<br>
+          <b>SOVEREIGN REPUBLIC OF DOGESTAN</b>
+          On-chain travel document
+        </div>
+        <svg class="pp-seal" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="92" fill="none" stroke="#d8b366" stroke-width="2"/>
+          <circle cx="100" cy="100" r="80" fill="#0b2545" stroke="#d8b366" stroke-width="1"/>
+          <g fill="#d8b366" stroke="#8a6826" stroke-width="0.6">
+            <path d="M100 60
+                     c -16 0 -26 8 -32 18
+                     c -3 6 -3 14 0 20
+                     c 2 4 6 8 12 11
+                     c 4 2 8 3 8 7
+                     l 0 12
+                     l 24 0
+                     l 0 -12
+                     c 0 -4 4 -5 8 -7
+                     c 6 -3 10 -7 12 -11
+                     c 3 -6 3 -14 0 -20
+                     c -6 -10 -16 -18 -32 -18 z"/>
+            <path d="M76 70 l -6 -18 l 16 10 z" fill="#b48a3d"/>
+            <path d="M124 70 l 6 -18 l -16 10 z" fill="#b48a3d"/>
+            <path d="M90 90 c 5 -6 15 -6 20 0 l -3 22 l -14 0 z" fill="#f0d68a" stroke="none"/>
+            <ellipse cx="87" cy="95" rx="2" ry="2.6" fill="#0b2545" stroke="none"/>
+            <ellipse cx="113" cy="95" rx="2" ry="2.6" fill="#0b2545" stroke="none"/>
+            <path d="M96 108 l 8 0 l -4 5 z" fill="#0b2545" stroke="none"/>
+          </g>
+          <text font-family="Cinzel, serif" font-size="7" font-weight="600" fill="#d8b366" letter-spacing="2.5">
+            <textPath href="#sealCircleTop" startOffset="50%" text-anchor="middle">DOGESTAN · ON-CHAIN · CITIZEN</textPath>
+          </text>
+        </svg>
+        <div class="pp-bot">
+          <div class="row"><span>Type</span><b>P</b></div>
+          <div class="row"><span>Code</span><b>DGS</b></div>
+          <div class="row"><span>No.</span><b>0x4F2A&hellip;91Bc</b></div>
+          <div class="row"><span>Name</span><b>HOLDER, CITIZEN</b></div>
+          <div class="row"><span>Issued</span><b>BLOCK 18,201,440</b></div>
+          <div class="row"><span>Expires</span><b>NEVER</b></div>
+          <div style="margin-top:14px; color:#cbb87c; letter-spacing:0.5px;">
+            P&lt;DGSHOLDER&lt;&lt;CITIZEN&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>
+            0x4F2A91Bc1DGS&lt;&lt;&lt;&lt;&lt;ETHMAIN&lt;&lt;&lt;&lt;&lt;&lt;0
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ====== FOOTER ====== -->
+<footer class="nat-foot" id="contact" data-screen-label="National Footer">
+  <div class="nat-foot-inner">
+    <div>
+      <svg class="seal-mini" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="90" fill="none" stroke="#d8b366" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="74" fill="#0b2545" stroke="#d8b366" stroke-width="0.8"/>
+        <g fill="#d8b366">
+          <path d="M100 65
+                   c -16 0 -26 8 -32 18
+                   c -3 6 -3 14 0 20
+                   c 2 4 6 8 12 11
+                   c 4 2 8 3 8 7
+                   l 0 10
+                   l 24 0
+                   l 0 -10
+                   c 0 -4 4 -5 8 -7
+                   c 6 -3 10 -7 12 -11
+                   c 3 -6 3 -14 0 -20
+                   c -6 -10 -16 -18 -32 -18 z"/>
+          <path d="M90 92 c 5 -6 15 -6 20 0 l -3 20 l -14 0 z" fill="#f0d68a"/>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <h5>Branches of Government</h5>
+      <a href="#president">Office of the President</a>
+      <a href="#treasury">Ministry of the Treasury</a>
+      <a href="#bulletin">Office of National Statistics</a>
+      <a href="#citizenship">Department of Citizenship</a>
+    </div>
+    <div>
+      <h5>Founding Documents</h5>
+      <a href="#declaration">Founding Declaration</a>
+      <a href="#constitution">The Constitution</a>
+      <a href="#bulletin">Latest Economic Bulletin</a>
+      <a href="#">National Token Charter</a>
+    </div>
+    <div>
+      <h5>Contact a Minister</h5>
+      <a href="#">press@dogestan.gov.dg</a>
+      <a href="#">treasury@dogestan.gov.dg</a>
+      <a href="#">citizenship@dogestan.gov.dg</a>
+      <a href="#">Telegram: @SovereignDogestan</a>
+    </div>
+
+    <div class="colofon">
+      <span>
+        © Sovereign Republic of Dogestan, MMXXIV. &nbsp;
+        Capitol of Dogestan, Block 18,234,567 &nbsp;·&nbsp; Mainnet, Ethereum.
+      </span>
+      <span>
+        This portal is a parody. No financial advice. Held together by faith and gas fees.
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
