@@ -150,7 +150,7 @@ a:hover { border-bottom-color: var(--navy); }
   border-bottom: 1px solid var(--gold-deep);
 }
 .nat-nav-inner {
-  max-width: 1180px; margin: 0 auto;
+  max-width: 1440px; margin: 0 auto;
   padding: 0 28px;
   display: flex; flex-wrap: wrap;
   align-items: stretch;
@@ -159,9 +159,9 @@ a:hover { border-bottom-color: var(--navy); }
   color: #e8dcb8;
   border: none;
   font-family: var(--serif-display);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  padding: 14px 13px;
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  padding: 14px 11px;
   text-transform: uppercase;
   border-right: 1px solid rgba(216,179,102,0.18);
   transition: background 0.15s;
