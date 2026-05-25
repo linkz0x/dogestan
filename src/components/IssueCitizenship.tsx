@@ -1,5 +1,7 @@
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { toBlob } from "html-to-image";
+import { FormEvent, useMemo, useRef, useState } from "react";
+import { toBlob, getFontEmbedCSS } from "html-to-image";
+
+type SnapshotOptions = NonNullable<Parameters<typeof toBlob>[1]>;
 
 const CLASSES = [
   { roman: "I.", value: "I. Diamond Hand", label: "Diamond Hand" },
@@ -59,16 +61,12 @@ export function IssueCitizenship() {
   const [photoName, setPhotoName] = useState<string | null>(null);
   const [issued, setIssued] = useState(false);
   const [copyState, setCopyState] = useState<"idle" | "copying" | "copied" | "error">("idle");
+  const [downloadState, setDownloadState] = useState<"idle" | "saving" | "error">("idle");
 
   const photoInputRef = useRef<HTMLInputElement>(null);
   const passportRef = useRef<HTMLElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    return () => {
-      if (photoUrl) URL.revokeObjectURL(photoUrl);
-    };
-  }, [photoUrl]);
+  const fontCssRef = useRef<string | null>(null);
 
   const { surname, given } = useMemo(() => splitName(name), [name]);
 
@@ -82,9 +80,12 @@ export function IssueCitizenship() {
   function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (photoUrl) URL.revokeObjectURL(photoUrl);
-    setPhotoUrl(URL.createObjectURL(file));
-    setPhotoName(file.name);
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPhotoUrl(typeof reader.result === "string" ? reader.result : null);
+      setPhotoName(file.name);
+    };
+    reader.readAsDataURL(file);
   }
 
   function handleIssue(e: FormEvent) {
@@ -105,7 +106,6 @@ export function IssueCitizenship() {
     setOrigin("");
     setSignature("");
     setCitizenClass(CLASSES[0].value);
-    if (photoUrl) URL.revokeObjectURL(photoUrl);
     setPhotoUrl(null);
     setPhotoName(null);
     setIssued(false);
@@ -120,21 +120,37 @@ export function IssueCitizenship() {
     }, 0);
   }
 
-  async function handleCopy() {
+  async function snapshotPassport(): Promise<Blob> {
     const node = passportRef.current;
-    if (!node) return;
+    if (!node) throw new Error("Passport not mounted");
+
+    if (document.fonts?.ready) {
+      await document.fonts.ready;
+    }
+    if (fontCssRef.current === null) {
+      try {
+        fontCssRef.current = await getFontEmbedCSS(node);
+      } catch (err) {
+        console.warn("Font embed CSS unavailable:", err);
+        fontCssRef.current = "";
+      }
+    }
+
+    const opts: SnapshotOptions = {
+      pixelRatio: 2,
+      backgroundColor: "#0b2545",
+    };
+    if (fontCssRef.current) opts.fontEmbedCSS = fontCssRef.current;
+
+    const blob = await toBlob(node, opts);
+    if (!blob) throw new Error("Empty image blob");
+    return blob;
+  }
+
+  async function handleCopy() {
     setCopyState("copying");
     try {
-      if (document.fonts?.ready) {
-        await document.fonts.ready;
-      }
-      const blob = await toBlob(node, {
-        pixelRatio: 2,
-        cacheBust: true,
-        backgroundColor: "#0b2545",
-      });
-      if (!blob) throw new Error("Empty image blob");
-
+      const blob = await snapshotPassport();
       if (!navigator.clipboard || typeof ClipboardItem === "undefined") {
         throw new Error("Clipboard image API not supported");
       }
@@ -147,6 +163,28 @@ export function IssueCitizenship() {
       console.error("Copy passport failed:", err);
       setCopyState("error");
       setTimeout(() => setCopyState("idle"), 2400);
+    }
+  }
+
+  async function handleDownload() {
+    setDownloadState("saving");
+    try {
+      const blob = await snapshotPassport();
+      const surname = splitName(name).surname.toUpperCase().replace(/[^A-Z0-9]/g, "") || "CITIZEN";
+      const filename = `dogestan-passport-${surname}.png`;
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      setDownloadState("idle");
+    } catch (err) {
+      console.error("Download passport failed:", err);
+      setDownloadState("error");
+      setTimeout(() => setDownloadState("idle"), 2400);
     }
   }
 
@@ -585,13 +623,22 @@ export function IssueCitizenship() {
                     ? "Copy failed"
                     : "Copy as Image"}
                 </button>
-                <button type="button" className="btn" onClick={() => window.print()}>
+                <button
+                  type="button"
+                  className={"btn" + (downloadState === "error" ? " bad" : "")}
+                  onClick={handleDownload}
+                  disabled={downloadState === "saving"}
+                >
                   <svg className="seal-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-                    <path d="M6 9 V3 H18 V9" />
-                    <rect x="4" y="9" width="16" height="9" rx="1" />
-                    <rect x="7" y="14" width="10" height="6" fill="currentColor" stroke="none" />
+                    <path d="M12 3 V15" />
+                    <path d="M7 11 L12 16 L17 11" />
+                    <path d="M4 19 H20" />
                   </svg>
-                  Print / Save Passport
+                  {downloadState === "saving"
+                    ? "Saving…"
+                    : downloadState === "error"
+                    ? "Save failed"
+                    : "Save as PNG"}
                 </button>
               </div>
             )}
