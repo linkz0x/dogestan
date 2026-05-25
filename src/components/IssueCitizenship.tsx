@@ -1,4 +1,5 @@
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { toBlob } from "html-to-image";
 
 const CLASSES = [
   { roman: "I.", value: "I. Diamond Hand", label: "Diamond Hand" },
@@ -57,6 +58,7 @@ export function IssueCitizenship() {
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [photoName, setPhotoName] = useState<string | null>(null);
   const [issued, setIssued] = useState(false);
+  const [copyState, setCopyState] = useState<"idle" | "copying" | "copied" | "error">("idle");
 
   const photoInputRef = useRef<HTMLInputElement>(null);
   const passportRef = useRef<HTMLElement>(null);
@@ -116,6 +118,36 @@ export function IssueCitizenship() {
       nameInputRef.current?.focus();
       nameInputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 0);
+  }
+
+  async function handleCopy() {
+    const node = passportRef.current;
+    if (!node) return;
+    setCopyState("copying");
+    try {
+      if (document.fonts?.ready) {
+        await document.fonts.ready;
+      }
+      const blob = await toBlob(node, {
+        pixelRatio: 2,
+        cacheBust: true,
+        backgroundColor: "#0b2545",
+      });
+      if (!blob) throw new Error("Empty image blob");
+
+      if (!navigator.clipboard || typeof ClipboardItem === "undefined") {
+        throw new Error("Clipboard image API not supported");
+      }
+      await navigator.clipboard.write([
+        new ClipboardItem({ [blob.type]: blob }),
+      ]);
+      setCopyState("copied");
+      setTimeout(() => setCopyState("idle"), 1800);
+    } catch (err) {
+      console.error("Copy passport failed:", err);
+      setCopyState("error");
+      setTimeout(() => setCopyState("idle"), 2400);
+    }
   }
 
   return (
@@ -533,6 +565,25 @@ export function IssueCitizenship() {
               <div className="actions actions-after">
                 <button type="button" className="btn ghost" onClick={handleEditAgain}>
                   Edit Details
+                </button>
+                <button
+                  type="button"
+                  className={"btn ghost" + (copyState === "copied" ? " ok" : copyState === "error" ? " bad" : "")}
+                  onClick={handleCopy}
+                  disabled={copyState === "copying"}
+                  aria-live="polite"
+                >
+                  <svg className="seal-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                    <rect x="9" y="3" width="11" height="13" rx="1.2" />
+                    <path d="M5 8 V20 a1 1 0 0 0 1 1 H15" />
+                  </svg>
+                  {copyState === "copying"
+                    ? "Copying…"
+                    : copyState === "copied"
+                    ? "Copied to clipboard"
+                    : copyState === "error"
+                    ? "Copy failed"
+                    : "Copy as Image"}
                 </button>
                 <button type="button" className="btn" onClick={() => window.print()}>
                   <svg className="seal-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
