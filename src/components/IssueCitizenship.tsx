@@ -1,4 +1,4 @@
-import { FormEvent, useMemo, useRef, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { toBlob, getFontEmbedCSS } from "html-to-image";
 
 type SnapshotOptions = NonNullable<Parameters<typeof toBlob>[1]>;
@@ -68,6 +68,29 @@ export function IssueCitizenship() {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const fontCssRef = useRef<string | null>(null);
 
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        if (document.fonts?.ready) await document.fonts.ready;
+        if (cancelled || !passportRef.current) return;
+        const css = await getFontEmbedCSS(passportRef.current);
+        if (!cancelled) {
+          fontCssRef.current = css;
+          if (!css) {
+            console.warn("Font embed CSS came back empty — snapshots may use fallback fonts.");
+          }
+        }
+      } catch (err) {
+        console.warn("Pre-caching font embed CSS failed:", err);
+        if (!cancelled) fontCssRef.current = "";
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const { surname, given } = useMemo(() => splitName(name), [name]);
 
   const mrz = useMemo(
@@ -124,9 +147,8 @@ export function IssueCitizenship() {
     const node = passportRef.current;
     if (!node) throw new Error("Passport not mounted");
 
-    if (document.fonts?.ready) {
-      await document.fonts.ready;
-    }
+    if (document.fonts?.ready) await document.fonts.ready;
+
     if (fontCssRef.current === null) {
       try {
         fontCssRef.current = await getFontEmbedCSS(node);
