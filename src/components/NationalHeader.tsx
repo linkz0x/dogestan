@@ -42,9 +42,7 @@ export function NationalHeader() {
           <a href="#/issue">Issue Passport</a>
           <a href="#constitution">The Constitution</a>
           <a href="#bulletin">Economic Bulletins</a>
-          <a href="#contact" style={{ marginLeft: "auto" }}>
-            Foreign Relations
-          </a>
+          <a href="#contact">Foreign Relations</a>
         </div>
       </nav>
     </header>
