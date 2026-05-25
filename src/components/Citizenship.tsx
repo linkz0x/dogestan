@@ -74,8 +74,8 @@ export function Citizenship() {
           </ol>
 
           <div className="cta">
-            <a className="btn" href="#">
-              Open the Treasury
+            <a className="btn" href="#/issue">
+              Issue Your Passport
             </a>
             <a className="btn ghost" href="#">
               Verify a Citizen

@@ -1042,3 +1042,575 @@ footer.nat-foot {
   .bulletin-head .right { text-align: left; }
   .nat-foot-inner { grid-template-columns: 1fr; }
 }
+
+/* ===================================================================== */
+/*  ISSUE CITIZENSHIP PAGE  (scoped under .issue-page to avoid clashes)  */
+/* ===================================================================== */
+.issue-page .issue-nat-header {
+  background: var(--navy); color: var(--parchment);
+  border-bottom: 4px double var(--gold);
+}
+.issue-page .issue-nat-header::before,
+.issue-page .issue-nat-header::after {
+  content: ""; display: block; height: 3px;
+  background: linear-gradient(to right, transparent, var(--gold) 15%, var(--gold) 85%, transparent);
+}
+.issue-page .issue-nat-header-inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 18px 28px;
+  display: flex; align-items: center; gap: 18px;
+}
+.issue-page .issue-nat-header .seal-small {
+  width: 56px; height: 56px; flex: none;
+}
+.issue-page .issue-nat-header .title { flex: 1; }
+.issue-page .issue-nat-header .title .top {
+  font-family: var(--serif-display);
+  font-size: 10px; letter-spacing: 0.3em; color: #cbb87c;
+  margin-bottom: 2px;
+}
+.issue-page .issue-nat-header .title .name {
+  font-family: var(--serif-display);
+  font-size: 18px; letter-spacing: 0.18em;
+  color: #f5e7be;
+}
+.issue-page .issue-nat-header .breadcrumb {
+  text-align: right;
+  font-family: var(--serif-head);
+  font-style: italic;
+  color: #cbb87c;
+  font-size: 14px;
+}
+.issue-page .issue-nat-header .breadcrumb a {
+  color: #cbb87c; border-bottom-color: rgba(216,179,102,0.4);
+}
+.issue-page .issue-nat-header .breadcrumb a:hover { color: #f5e7be; }
+.issue-page .issue-nat-header .breadcrumb .sep { opacity: 0.5; margin: 0 8px; }
+.issue-page .issue-nat-header .breadcrumb strong { color: #f5e7be; }
+
+.issue-page .issue-main {
+  max-width: 1280px; margin: 0 auto; padding: 0 28px 64px;
+}
+
+.issue-page .page-head {
+  padding: 56px 0 36px;
+  text-align: center;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.issue-page .page-head .eyebrow {
+  font-family: var(--serif-display);
+  font-size: 11px; letter-spacing: 0.32em;
+  color: var(--gold-deep); text-transform: uppercase;
+  margin: 0 0 14px;
+  display: flex; align-items: center; gap: 12px;
+  justify-content: center;
+}
+.issue-page .page-head .eyebrow::before,
+.issue-page .page-head .eyebrow::after {
+  content: ""; height: 1px; width: 80px; max-width: 80px;
+  background: linear-gradient(to right, transparent, var(--rule), transparent);
+}
+.issue-page .page-head h1 {
+  margin: 0 0 14px;
+  font-family: var(--serif-head); font-weight: 500;
+  font-size: clamp(34px, 5vw, 56px);
+  color: var(--navy); line-height: 1.05;
+}
+.issue-page .page-head h1 em { font-style: italic; color: var(--gold-deep); }
+.issue-page .page-head p {
+  font-family: var(--serif-head); font-style: italic;
+  color: var(--ink-soft); max-width: 64ch; margin: 0 auto;
+  font-size: 19px;
+}
+
+.issue-page .work-grid {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ---- the official form ---- */
+.issue-page .form-card {
+  background: var(--parchment-2);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--gold);
+  padding: 28px 30px 30px;
+  position: relative;
+}
+.issue-page .form-card .form-no {
+  font-family: var(--serif-display);
+  font-size: 10px; letter-spacing: 0.3em;
+  color: var(--gold-deep); text-align: center;
+}
+.issue-page .form-card h2 {
+  margin: 6px 0 4px;
+  font-family: var(--serif-display);
+  font-weight: 600; color: var(--navy);
+  font-size: 20px; letter-spacing: 0.14em;
+  text-align: center;
+}
+.issue-page .form-card .form-sub {
+  font-family: var(--serif-head); font-style: italic;
+  color: var(--ink-soft); font-size: 14px;
+  text-align: center;
+  padding-bottom: 16px; margin-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.issue-page .field { margin: 14px 0; }
+.issue-page .field label {
+  display: block;
+  font-family: var(--serif-display);
+  font-size: 10px; letter-spacing: 0.22em;
+  color: var(--gold-deep);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.issue-page .field input[type="text"],
+.issue-page .field select {
+  width: 100%;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 11px 12px;
+  font-family: var(--serif-head);
+  font-size: 17px;
+  color: var(--ink);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.issue-page .field input[type="text"]:focus,
+.issue-page .field select:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: inset 0 0 0 1px var(--navy);
+}
+.issue-page .field input::placeholder {
+  color: var(--muted); font-style: italic;
+  font-family: var(--serif-head);
+}
+.issue-page .field .hint {
+  font-family: var(--serif-body); font-style: italic;
+  font-size: 13px; color: var(--muted); margin-top: 4px;
+}
+
+.issue-page .row-2 {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+
+/* photo upload */
+.issue-page .field label.photo-drop {
+  border: 1px dashed var(--rule);
+  background: var(--parchment);
+  padding: 14px;
+  display: flex; gap: 14px; align-items: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--serif-body);
+  margin-bottom: 0;
+  color: var(--ink);
+}
+.issue-page .field label.photo-drop,
+.issue-page .field label.photo-drop * { text-transform: none; }
+.issue-page .photo-drop:hover { border-color: var(--navy); background: #fbf6e3; }
+.issue-page .photo-drop.has { border-style: solid; border-color: var(--navy); }
+.issue-page .photo-drop .thumb {
+  width: 70px; height: 90px;
+  background-color: var(--parchment-3);
+  border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  flex: none;
+  background-size: cover;
+  background-position: center;
+}
+.issue-page .photo-drop .thumb svg { width: 36px; height: 36px; opacity: 0.5; }
+.issue-page .photo-drop .pinfo {
+  font-family: var(--serif-head); font-size: 15px; color: var(--ink);
+}
+.issue-page .photo-drop .pinfo b {
+  font-family: var(--serif-display);
+  font-size: 11px; letter-spacing: 0.18em;
+  color: var(--navy); display: block; margin-bottom: 2px;
+}
+.issue-page .photo-drop .pinfo i {
+  color: var(--muted); font-style: italic; font-size: 13px;
+  display: block; margin-top: 4px;
+}
+.issue-page .photo-drop input[type="file"] { display: none; }
+
+/* class radios */
+.issue-page .class-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.issue-page .class-grid label.opt {
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  padding: 10px 12px;
+  font-family: var(--serif-head); font-size: 15px;
+  color: var(--ink); cursor: pointer;
+  letter-spacing: 0;
+  display: flex; gap: 8px; align-items: baseline;
+  transition: all 0.15s;
+  text-transform: none;
+}
+.issue-page .class-grid label.opt:hover { border-color: var(--navy); }
+.issue-page .class-grid label.opt input { display: none; }
+.issue-page .class-grid label.opt .roman {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  color: var(--gold-deep);
+  font-size: 12px; letter-spacing: 0.12em;
+}
+.issue-page .class-grid label.opt.on {
+  background: var(--navy);
+  color: var(--parchment);
+  border-color: var(--navy);
+}
+.issue-page .class-grid label.opt.on .roman { color: var(--gold-light); }
+
+/* buttons (scoped — flex:1 differs from global .btn) */
+.issue-page .actions {
+  margin-top: 22px;
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.issue-page .actions .btn { flex: 1; }
+.issue-page .btn .seal-ico { width: 14px; height: 14px; flex: none; }
+.issue-page .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+.issue-page .form-foot {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--serif-body); font-style: italic;
+  font-size: 12px; color: var(--muted); line-height: 1.5;
+}
+
+/* ---- passport (open spread) ---- */
+.issue-page .passport-stage {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 16px;
+}
+.issue-page .passport-label {
+  font-family: var(--serif-display);
+  font-size: 10px; letter-spacing: 0.32em;
+  color: var(--gold-deep);
+  text-align: center;
+}
+
+.issue-page .passport {
+  --pp-w: 820px;
+  width: 100%;
+  max-width: var(--pp-w);
+  aspect-ratio: 1.55 / 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--navy);
+  border: 1px solid var(--gold-deep);
+  padding: 10px;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.15),
+    0 8px 24px rgba(11,37,69,0.25),
+    inset 0 0 0 4px var(--navy),
+    inset 0 0 0 5px var(--gold-deep);
+  position: relative;
+  color: var(--ink);
+}
+.issue-page .passport::before {
+  content: ""; position: absolute;
+  left: 50%; top: 16px; bottom: 16px; width: 2px;
+  transform: translateX(-1px);
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4), transparent);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.issue-page .pp-page {
+  background: var(--parchment);
+  background-image:
+    radial-gradient(rgba(120, 100, 50, 0.05) 1px, transparent 1px);
+  background-size: 3px 3px;
+  border: 1px solid var(--rule);
+  padding: 20px 22px;
+  position: relative;
+  overflow: hidden;
+  color: var(--ink);
+  font-family: var(--serif-body);
+  display: flex;
+  flex-direction: column;
+}
+.issue-page .pp-page.left { border-right: none; }
+.issue-page .pp-page.right { border-left: none; }
+
+.issue-page .pp-watermark {
+  position: absolute;
+  inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.issue-page .pp-watermark svg { width: 90%; height: 90%; }
+
+/* LEFT PAGE */
+.issue-page .pp-page.left .pp-head {
+  display: flex; justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  position: relative; z-index: 1;
+}
+.issue-page .pp-page.left .pp-head .type {
+  font-family: var(--serif-display);
+  font-size: 9px; letter-spacing: 0.28em;
+  color: var(--navy);
+}
+.issue-page .pp-page.left .pp-head .type b { color: var(--navy); }
+
+.issue-page .pp-photo-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  position: relative; z-index: 1;
+}
+.issue-page .pp-photo {
+  width: 110px; height: 142px;
+  background-color: var(--parchment-3);
+  border: 1px solid var(--navy);
+  background-size: cover; background-position: center;
+  position: relative;
+  display: flex; align-items: flex-end; justify-content: center;
+  overflow: hidden;
+}
+.issue-page .pp-photo .placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6px;
+  background: linear-gradient(180deg, #e7d6a4, #c9b073);
+}
+.issue-page .pp-photo .placeholder svg { width: 64%; height: auto; }
+.issue-page .pp-photo .placeholder span {
+  font-family: var(--serif-display);
+  font-size: 7px; letter-spacing: 0.22em;
+  color: var(--navy);
+  background: rgba(245,238,219,0.7);
+  padding: 1px 4px;
+  margin-bottom: 4px;
+}
+.issue-page .pp-photo::before,
+.issue-page .pp-photo::after {
+  content: ""; position: absolute;
+  width: 10px; height: 10px;
+  border: 1px solid var(--navy);
+}
+.issue-page .pp-photo::before { left: -1px; top: -1px; border-right: none; border-bottom: none; }
+.issue-page .pp-photo::after  { right: -1px; bottom: -1px; border-left: none; border-top: none; }
+
+.issue-page .pp-fields {
+  display: flex; flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.issue-page .pp-field { line-height: 1.15; min-width: 0; }
+.issue-page .pp-field .k {
+  font-family: var(--serif-display);
+  font-size: 7px; letter-spacing: 0.2em;
+  color: var(--gold-deep);
+  margin-bottom: 1px;
+  white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.issue-page .pp-field .v {
+  font-family: var(--serif-head);
+  font-weight: 500;
+  color: var(--navy);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  word-break: break-word;
+}
+.issue-page .pp-field .v.mono {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  text-transform: none;
+  word-break: break-all;
+}
+
+.issue-page .pp-row-2 {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  margin-top: 12px;
+  position: relative; z-index: 1;
+}
+.issue-page .pp-row-3 {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+  margin-top: 10px;
+  position: relative; z-index: 1;
+}
+
+/* RIGHT PAGE */
+.issue-page .pp-page.right .pp-head {
+  text-align: center;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 8px; margin-bottom: 14px;
+  position: relative; z-index: 1;
+}
+.issue-page .pp-page.right .pp-head .title {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 13px; letter-spacing: 0.22em;
+}
+.issue-page .pp-page.right .pp-head .sub {
+  font-family: var(--serif-head); font-style: italic;
+  font-size: 12px; color: var(--ink-soft);
+}
+
+.issue-page .pp-rights {
+  font-family: var(--serif-head);
+  font-size: 11.5px; color: var(--ink);
+  text-align: justify; hyphens: auto;
+  line-height: 1.4;
+  position: relative; z-index: 1;
+  margin-bottom: 12px;
+}
+.issue-page .pp-rights b {
+  color: var(--navy);
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  display: block; margin-bottom: 4px;
+}
+
+.issue-page .pp-sig-row {
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  gap: 14px;
+  align-items: end;
+  position: relative; z-index: 1;
+  margin-top: auto;
+}
+.issue-page .pp-sig {
+  border-bottom: 1px solid var(--navy);
+  padding-bottom: 2px;
+  min-height: 36px;
+  font-family: "Mrs Saint Delafield", "Allura", "Brush Script MT", cursive;
+  font-size: 28px;
+  color: var(--navy);
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.issue-page .pp-sig-meta {
+  font-family: var(--serif-display);
+  font-size: 7px; letter-spacing: 0.2em;
+  color: var(--gold-deep);
+  margin-top: 4px;
+}
+.issue-page .pp-mini-seal {
+  width: 100px; height: 100px;
+  align-self: center;
+}
+
+.issue-page .pp-mrz {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  font-family: "Courier New", monospace;
+  font-size: clamp(8px, 1.35vw, 13px);
+  color: var(--ink);
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  position: relative; z-index: 1;
+}
+.issue-page .pp-mrz > div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+/* ----- Issued stamp ----- */
+.issue-page .issued-stamp {
+  position: absolute;
+  right: 18px; top: 22px;
+  transform: rotate(-9deg) scale(0.7);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.2, 1.6, 0.4, 1), opacity 0.3s;
+  border: 3px solid var(--stamp);
+  color: var(--stamp);
+  font-family: var(--serif-display);
+  font-weight: 700;
+  padding: 6px 14px 5px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 1.05;
+  background: rgba(168, 38, 42, 0.02);
+  box-shadow: inset 0 0 0 1px rgba(168,38,42,0.4);
+  z-index: 5;
+  pointer-events: none;
+}
+.issue-page .issued-stamp .big {
+  display: block; font-size: 18px; letter-spacing: 0.16em;
+}
+.issue-page .issued-stamp .small {
+  display: block; font-size: 8px; letter-spacing: 0.22em; margin-top: 3px;
+}
+.issue-page .passport.issued .issued-stamp {
+  opacity: 0.9;
+  transform: rotate(-9deg) scale(1);
+}
+.issue-page .issued-stamp.alt {
+  right: 26px; top: auto; bottom: 70px;
+  transform: rotate(6deg) scale(0.7);
+}
+.issue-page .passport.issued .issued-stamp.alt {
+  transform: rotate(6deg) scale(1);
+}
+
+.issue-page .actions-after {
+  max-width: 820px; width: 100%; margin-top: 6px;
+}
+
+/* Responsive */
+@media (max-width: 1080px) {
+  .issue-page .work-grid { grid-template-columns: 1fr; }
+  .issue-page .passport { max-width: 720px; margin: 0 auto; }
+}
+@media (max-width: 640px) {
+  .issue-page .issue-nat-header-inner { flex-wrap: wrap; }
+  .issue-page .issue-nat-header .breadcrumb { display: none; }
+  .issue-page .passport {
+    aspect-ratio: auto;
+    grid-template-columns: 1fr;
+  }
+  .issue-page .passport::before { display: none; }
+  .issue-page .pp-page.left { border-right: 1px solid var(--rule); border-bottom: none; }
+  .issue-page .pp-page.right { border-left: 1px solid var(--rule); border-top: 1px solid rgba(180,138,61,0.4); }
+  .issue-page .pp-photo-row { grid-template-columns: 90px 1fr; }
+  .issue-page .pp-photo { width: 90px; height: 116px; }
+  .issue-page .pp-field .v { font-size: 12px; }
+  .issue-page .class-grid { grid-template-columns: 1fr; }
+}
+
+/* Print — only the passport */
+@media print {
+  body { background: white; }
+  .issue-page .issue-nat-header,
+  .issue-page .page-head,
+  .issue-page .form-card,
+  .issue-page .passport-label,
+  .issue-page .actions-after,
+  .gov-strip, .nat-foot, footer { display: none !important; }
+  .issue-page .issue-main { padding: 0; max-width: none; }
+  .issue-page .work-grid { display: block; }
+  .issue-page .passport-stage { gap: 0; }
+  .issue-page .passport {
+    box-shadow: none;
+    max-width: 100%;
+  }
+  @page { size: landscape; margin: 12mm; }
+}

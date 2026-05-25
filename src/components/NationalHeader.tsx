@@ -39,6 +39,7 @@ export function NationalHeader() {
           <a href="#president">Office of the President</a>
           <a href="#treasury">Ministry of the Treasury</a>
           <a href="#citizenship">Department of Citizenship</a>
+          <a href="#/issue">Issue Passport</a>
           <a href="#constitution">The Constitution</a>
           <a href="#bulletin">Economic Bulletins</a>
           <a href="#contact" style={{ marginLeft: "auto" }}>
