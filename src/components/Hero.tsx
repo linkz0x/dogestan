@@ -35,7 +35,7 @@ export function Hero() {
           Registry of Incorporation &nbsp;·&nbsp; National Charter №&nbsp;000001
         </div>
         <div className="reg-no">
-          <b>CA</b> &nbsp;0xD06E57AN42069B1n6u5F1r57Pr351D3n7C0n7r4c7
+          <b>CA</b> &nbsp;DogestanB1nguSF1rstPres1dentSoLanaContr4cT
         </div>
         <div className="reg-foot">
           Filed on the public ledger. Witnessed by 14,221 nodes. Verifiable from

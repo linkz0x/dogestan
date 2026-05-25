@@ -115,7 +115,7 @@ export function GDPFlipTracker() {
           <div>
             <div className="label">Treasury Reserves</div>
             <div className="small-val">$184,920</div>
-            <div className="sub">Held in liquidity, ETH-denominated.</div>
+            <div className="sub">Held in liquidity, SOL-denominated.</div>
           </div>
           <div>
             <div className="label">Citizens Enrolled</div>

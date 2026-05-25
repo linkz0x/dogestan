@@ -25,7 +25,7 @@ function splitName(full: string) {
 }
 
 function shortAddr(a: string) {
-  if (!a) return "0x4F2A…91Bc";
+  if (!a) return "So11…aPa3W";
   const t = a.trim();
   if (t.length <= 14) return t.toUpperCase();
   return (t.slice(0, 6) + "…" + t.slice(-4)).toUpperCase();
@@ -39,7 +39,7 @@ function buildMrz(surname: string, given: string, addr: string) {
   line1 = (line1 + "<".repeat(44)).slice(0, 44);
 
   const a = clean(addr).slice(0, 16) || "DOGESTANCITIZEN0";
-  let line2 = a + "DGS<<<<<ETHMAIN<<<<<<<0";
+  let line2 = a + "DGS<<<<<SOLMAIN<<<<<<<0";
   line2 = (line2 + "<".repeat(44)).slice(0, 44);
   return { l1: line1, l2: line2 };
 }
@@ -324,7 +324,7 @@ export function IssueCitizenship() {
               <input
                 type="text"
                 id="alias"
-                placeholder="e.g. diamondhands.eth"
+                placeholder="e.g. diamondhands.sol"
                 value={alias}
                 onChange={(e) => setAlias(e.target.value)}
                 maxLength={40}
@@ -339,7 +339,7 @@ export function IssueCitizenship() {
               <input
                 type="text"
                 id="wallet"
-                placeholder="0x4F2A91Bc…1Dc8"
+                placeholder="So11111111111111…aPa3W"
                 value={wallet}
                 onChange={(e) => setWallet(e.target.value)}
                 maxLength={44}

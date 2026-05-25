@@ -75,7 +75,7 @@ export function Footer() {
         <div className="colofon">
           <span>
             © Sovereign Republic of Dogestan, MMXXIV. &nbsp; Capitol of
-            Dogestan, Block 18,234,567 &nbsp;·&nbsp; Mainnet, Ethereum.
+            Dogestan, Block 18,234,567 &nbsp;·&nbsp; Mainnet, Solana.
           </span>
           <span>
             This portal is a parody. No financial advice. Held together by faith

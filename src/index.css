@@ -127,10 +127,11 @@ a:hover { border-bottom-color: var(--navy); }
   position: relative; top: -2px;
 }
 .nat-header .flag-pole {
-  display: flex; flex-direction: column; align-items: flex-end;
+  display: flex; flex-direction: column; align-items: center;
   font-family: var(--serif-display); font-size: 11px;
   letter-spacing: 0.2em; color: #cbb87c;
   gap: 8px;
+  text-align: center;
 }
 .nat-header .flag-pole .flag {
   width: 88px; height: 56px; background: var(--navy-deep);
@@ -159,11 +160,12 @@ a:hover { border-bottom-color: var(--navy); }
   border: none;
   font-family: var(--serif-display);
   font-size: 12px;
-  letter-spacing: 0.18em;
-  padding: 14px 18px;
+  letter-spacing: 0.14em;
+  padding: 14px 13px;
   text-transform: uppercase;
   border-right: 1px solid rgba(216,179,102,0.18);
   transition: background 0.15s;
+  white-space: nowrap;
 }
 .nat-nav a:first-child { border-left: 1px solid rgba(216,179,102,0.18); }
 .nat-nav a:hover { background: var(--navy-soft); color: #f5e7be; }

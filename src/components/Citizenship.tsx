@@ -33,7 +33,7 @@ export function Citizenship() {
                 <b>Connect a sovereign wallet.</b>
                 <br />
                 <i>
-                  A non-custodial wallet on the Ethereum mainnet is required.
+                  A non-custodial wallet on the Solana mainnet is required.
                   Hardware wallets are recognised as &ldquo;reinforced
                   sovereign instruments&rdquo;.
                 </i>
@@ -171,7 +171,7 @@ function Passport() {
         </div>
         <div className="row">
           <span>No.</span>
-          <b>0x4F2A&hellip;91Bc</b>
+          <b>So11&hellip;aPa3W</b>
         </div>
         <div className="row">
           <span>Name</span>
@@ -190,7 +190,7 @@ function Passport() {
         >
           P&lt;DGSHOLDER&lt;&lt;CITIZEN&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
           <br />
-          0x4F2A91Bc1DGS&lt;&lt;&lt;&lt;&lt;ETHMAIN&lt;&lt;&lt;&lt;&lt;&lt;0
+          So11aPa3W1DGS&lt;&lt;&lt;&lt;&lt;SOLMAIN&lt;&lt;&lt;&lt;&lt;&lt;0
         </div>
       </div>
     </div>
